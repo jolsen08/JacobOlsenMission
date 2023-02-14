@@ -6,8 +6,10 @@
 
 <h1>Please enter in the Movie Information</h1>
 
+@*Here is the form for the user to enter in their movie information, which uses the post method*@
 <div>
     <form method="post">
+        @*All attributes are required besides Edited, Lent To, and Notes*@
         <label asp-for="Category">Category:</label>
         <input asp-for="Category" required/><br />
 
@@ -19,7 +21,7 @@
 
         <label asp-for="Director">Director:</label>
         <input asp-for="Director" required/><br />
-
+        @*The Rating field is a dropdown menu with 4 options*@
         <label asp-for="Rating">Rating:</label>
         <select asp-for="Rating" required>
             <option value="G">G</option>
@@ -27,7 +29,7 @@
             <option value="PG13">PG-13</option>
             <option value="R">R</option>
         </select><br />
-
+        @*The Edited field is also a dropdown, with a Yes or No option. This will be reflected as boolean in the database*@
         <label asp-for="Edited">Edited:</label>
         <select asp-for="Edited">
             <option value="True">Yes</option>
@@ -36,7 +38,7 @@
 
         <label asp-for="LentTo">Lent To:</label>
         <input asp-for="LentTo"/><br />
-
+        @*I set the max length of the Notes input to 25 characters. This restraint is also enforced in the model.*@
         <label asp-for="Notes">Notes:</label>
         <input asp-for="Notes" maxlength="25"/><br /><br />
 

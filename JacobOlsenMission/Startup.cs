@@ -26,7 +26,7 @@ namespace JacobOlsenMission
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            /*Establishing the connection string to the database*/
             services.AddDbContext<MovieFormContext>(options =>
            {
                options.UseSqlite(Configuration["ConnectionStrings:MovieConnection"]);

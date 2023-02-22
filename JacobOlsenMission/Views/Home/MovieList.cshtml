@@ -1,0 +1,44 @@
+﻿@*The Movie List page, which will display to the user all of the movie records in the collection, along
+    with edit and delete options, which will allow the ability to update and delete from the collection.*@
+
+@{
+    ViewData["Title"] = "Movie List";
+}
+
+@model List<ApplicationResponse> 
+
+@*Added in the table parameters are some bootstrap to make the table look a little more professional.*@
+<table class="table table-bordered table-striped">
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Category</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Edited?</td>
+            <td>Lent To</td>
+            <td>Notes</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.Category.CategoryName</td>
+                    <td>@x.Title</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    <td>@x.Edited</td>
+                    <td>@x.LentTo</td>
+                    <td>@x.Notes</td>
+
+                    @*Adding edit and delete buttons to the table while passing the MovieID*@
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.MovieID">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.MovieID">Delete</a></td>
+                </tr>
+            }
+    </tbody>
+</table>

@@ -13,8 +13,7 @@ namespace JacobOlsenMission.Models
         [Key]
         [Required]
         public int MovieID { get; set; }
-        [Required]
-        public string Category { get; set; }
+      
         [Required]
         public string Title { get; set; }
         [Required]
@@ -30,5 +29,10 @@ namespace JacobOlsenMission.Models
         /*Setting the string max length to 25, even though that is already enforced in the cshtml form.*/
         [StringLength(25)]
         public string Notes { get; set; }
+
+        //Build foreign key relationship
+        [Required]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

@@ -1,0 +1,21 @@
+﻿
+@*Here is the delete view, which acts as a confirmation page for the user to delete a record.*@
+
+@{
+    ViewData["Title"] = "Delete Form";
+}
+
+@model ApplicationResponse
+
+<h2>Confirm Deletion</h2>
+<h3>Are you sure you want to delete the record for @Model.Title?</h3>
+
+@*The form is accessing the Delete action in the controller*@
+<form method="post" asp-controller="Home" asp-action="Delete">
+    <button type="Submit">Delete</button>
+    <a asp-controller="Home" asp-action="MovieList" class="btn btn-primary">Cancel</a>
+
+@*Here is a hidden field which will pass the MovieID to the action so that the correct record
+    is deleted.*@
+    <input type="hidden" asp-for="MovieID" />
+</form>

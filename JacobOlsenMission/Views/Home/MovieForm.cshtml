@@ -8,10 +8,19 @@
 
 @*Here is the form for the user to enter in their movie information, which uses the post method*@
 <div>
-    <form method="post">
+    <form method="post" asp-validation-summary="All">
         @*All attributes are required besides Edited, Lent To, and Notes*@
-        <label asp-for="Category">Category:</label>
-        <input asp-for="Category" required/><br />
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId">
+
+            @*To break up the Category into separate options and to avoid redundancy, the program will
+                go through the Category table and add each category name as an option.*@
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categorys)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select><br />
 
         <label asp-for="Title">Title:</label>
         <input asp-for="Title" required/><br />
@@ -23,7 +32,7 @@
         <input asp-for="Director" required/><br />
         @*The Rating field is a dropdown menu with 4 options*@
         <label asp-for="Rating">Rating:</label>
-        <select asp-for="Rating" required>
+        <select asp-for="Rating" required> 
             <option value="G">G</option>
             <option value="PG">PG</option>
             <option value="PG13">PG-13</option>
